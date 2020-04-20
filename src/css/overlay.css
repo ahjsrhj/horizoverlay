@@ -128,11 +128,20 @@
 }
 .row .damage-percent {
   position: relative;
-  text-align: right;
   width: 100%;
   font-size: 7px;
   top: -2px;
   right: 10px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.row .damage-percent-num {
+  /* width:100%; */
+  text-align: right;
+  flex: 1 1;
 }
 
 .row .dps {
@@ -192,7 +201,10 @@
 }
 .row .maxhit {
   font-size: 0.85em;
-  margin-top: -0.3em;
+  /* margin-top: -0.3em; */
   margin-left: -0.8em;
   text-align: center;
+}
+.ch-info {
+  font-size: 10px;
 }

@@ -1,54 +1,56 @@
-import React, { Component } from 'react'
-import { withHelper } from './helpers'
-import locale from './locale'
+/** @format */
 
-import './css/config.css'
+import React, { Component } from "react";
+import { withHelper } from "./helpers";
+import locale from "./locale";
+
+import "./css/config.css";
 
 class ConfigRaw extends Component {
-  state = { ...this.props }
-  handleConfig = e => {
-    const target = e.target
-    if (target.type === 'text') e.preventDefault()
-    const config = { ...this.state.config }
+  state = { ...this.props };
+  handleConfig = (e) => {
+    const target = e.target;
+    if (target.type === "text") e.preventDefault();
+    const config = { ...this.state.config };
     let key = target.name,
-      value = target.value
+      value = target.value;
 
     // Why aren't HTML elements more consistent? 😦
-    if (target.type === 'checkbox') {
-      value = target.checked
+    if (target.type === "checkbox") {
+      value = target.checked;
     }
 
     // update the value in our copied state...
-    config[key] = value
+    config[key] = value;
     // ...and set it to component' state
-    this.setState({ config })
+    this.setState({ config });
 
     // And then save it to localStorage!
-    localStorage.setItem('horizoverlay', JSON.stringify(config))
-  }
-  resetConfig = e => {
-    e.preventDefault()
+    localStorage.setItem("horizoverlay", JSON.stringify(config));
+  };
+  resetConfig = (e) => {
+    e.preventDefault();
 
     // Clear any setup
-    window.localStorage.clear()
+    window.localStorage.clear();
 
     // send to the wrapper component
-    this.props.handleReset(e)
+    this.props.handleReset(e);
 
     // well that's horrible
-    window.location.reload()
-  }
+    window.location.reload();
+  };
   // *** IMPORTANT ***
   // Gotta bind 'onChange' for checkboxes since false values don't bubble to 'onChange'!
   render() {
-    let { config } = this.state
-    const loc = locale[config.locale].config
+    let { config } = this.state;
+    const loc = locale[config.locale].config;
     return (
       <div className="config" style={{ zoom: config.zoom }}>
-        <form onSubmit={e => this.resetConfig(e)}>
+        <form onSubmit={(e) => this.resetConfig(e)}>
           <label
             htmlFor="showSetup"
-            className={`setup-btn${config.showSetup ? '' : ' disabled'}`}
+            className={`setup-btn${config.showSetup ? "" : " disabled"}`}
           >
             <span>
               <input
@@ -57,7 +59,7 @@ class ConfigRaw extends Component {
                 id="showSetup"
                 checked={config.showSetup}
                 onChange={this.handleConfig}
-              />{' '}
+              />{" "}
               {/* Setup Mode */}
               {loc.setupTitle}
             </span>
@@ -91,7 +93,7 @@ class ConfigRaw extends Component {
                 name="color"
                 id="colorByRole"
                 value="byRole"
-                checked={config.color === 'byRole'}
+                checked={config.color === "byRole"}
                 onChange={this.handleConfig}
               />
               <label htmlFor="colorByRole">
@@ -104,7 +106,7 @@ class ConfigRaw extends Component {
                 name="color"
                 id="colorBlackWhite"
                 value="blackWhite"
-                checked={config.color === 'blackWhite'}
+                checked={config.color === "blackWhite"}
                 onChange={this.handleConfig}
               />
               <label htmlFor="colorBlackWhite">
@@ -218,7 +220,52 @@ class ConfigRaw extends Component {
               {/* Damage % */}
               {loc.toggleOption8}
             </label>
-			<input
+            <input
+              type="checkbox"
+              name="showDeathNumber"
+              id="showDeathNumber"
+              defaultChecked={config.showDeathNumber}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showDeathNumber">
+              {/* Damage % */}
+              {loc.toggleOption13}
+            </label>
+            <input
+              type="checkbox"
+              name="showCrithitsPercent"
+              id="showCrithitsPercent"
+              defaultChecked={config.showCrithitsPercent}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showCrithitsPercent">
+              {/* Damage % */}
+              {loc.toggleOption14}
+            </label>
+            <input
+              type="checkbox"
+              name="showDirectHitPercent"
+              id="showDirectHitPercent"
+              defaultChecked={config.showDirectHitPercent}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showDirectHitPercent">
+              {/* Damage % */}
+              {loc.toggleOption15}
+            </label>
+            <input
+              type="checkbox"
+              name="showCirtDirectHitPercent"
+              id="showCirtDirectHitPercent"
+              defaultChecked={config.showCirtDirectHitPercent}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showCirtDirectHitPercent">
+              {/* Damage % */}
+              {loc.toggleOption16}
+            </label>
+
+            <input
               type="checkbox"
               name="showJobless"
               id="showJobless"
@@ -273,7 +320,7 @@ class ConfigRaw extends Component {
 
             <label
               htmlFor="zoom80"
-              className={`${config.zoom === '0.8' ? '' : ' disabled'}`}
+              className={`${config.zoom === "0.8" ? "" : " disabled"}`}
             >
               <span>
                 <input
@@ -281,16 +328,16 @@ class ConfigRaw extends Component {
                   name="zoom"
                   id="zoom80"
                   value="0.8"
-                  checked={config.zoom === '0.8'}
+                  checked={config.zoom === "0.8"}
                   onChange={this.handleConfig}
-                />{' '}
+                />{" "}
                 {/* 80% */}
                 {loc.zoomOption1}
               </span>
             </label>
             <label
               htmlFor="zoom90"
-              className={`${config.zoom === '0.9' ? '' : ' disabled'}`}
+              className={`${config.zoom === "0.9" ? "" : " disabled"}`}
             >
               <span>
                 <input
@@ -298,16 +345,16 @@ class ConfigRaw extends Component {
                   name="zoom"
                   id="zoom90"
                   value="0.9"
-                  checked={config.zoom === '0.9'}
+                  checked={config.zoom === "0.9"}
                   onChange={this.handleConfig}
-                />{' '}
+                />{" "}
                 {/* 90% */}
                 {loc.zoomOption2}
               </span>
             </label>
             <label
               htmlFor="zoom100"
-              className={`${config.zoom === '1' ? '' : ' disabled'}`}
+              className={`${config.zoom === "1" ? "" : " disabled"}`}
             >
               <span>
                 <input
@@ -315,9 +362,9 @@ class ConfigRaw extends Component {
                   name="zoom"
                   id="zoom100"
                   value="1"
-                  checked={config.zoom === '1'}
+                  checked={config.zoom === "1"}
                   onChange={this.handleConfig}
-                />{' '}
+                />{" "}
                 {/* 100% */}
                 {loc.zoomOption3}
               </span>
@@ -326,7 +373,7 @@ class ConfigRaw extends Component {
             <br />
             <label
               htmlFor="zoom110"
-              className={`${config.zoom === '1.1' ? '' : ' disabled'}`}
+              className={`${config.zoom === "1.1" ? "" : " disabled"}`}
             >
               <span>
                 <input
@@ -334,16 +381,16 @@ class ConfigRaw extends Component {
                   name="zoom"
                   id="zoom110"
                   value="1.1"
-                  checked={config.zoom === '1.1'}
+                  checked={config.zoom === "1.1"}
                   onChange={this.handleConfig}
-                />{' '}
+                />{" "}
                 {/* 110% */}
                 {loc.zoomOption4}
               </span>
             </label>
             <label
               htmlFor="zoom150"
-              className={`${config.zoom === '1.5' ? '' : ' disabled'}`}
+              className={`${config.zoom === "1.5" ? "" : " disabled"}`}
             >
               <span>
                 <input
@@ -351,16 +398,16 @@ class ConfigRaw extends Component {
                   name="zoom"
                   id="zoom150"
                   value="1.5"
-                  checked={config.zoom === '1.5'}
+                  checked={config.zoom === "1.5"}
                   onChange={this.handleConfig}
-                />{' '}
+                />{" "}
                 {/* 150% */}
                 {loc.zoomOption5}
               </span>
             </label>
             <label
               htmlFor="zoom200"
-              className={`${config.zoom === '2' ? '' : ' disabled'}`}
+              className={`${config.zoom === "2" ? "" : " disabled"}`}
             >
               <span>
                 <input
@@ -368,9 +415,9 @@ class ConfigRaw extends Component {
                   name="zoom"
                   id="zoom200"
                   value="2"
-                  checked={config.zoom === '2'}
+                  checked={config.zoom === "2"}
                   onChange={this.handleConfig}
-                />{' '}
+                />{" "}
                 {/* 200% */}
                 {loc.zoomOption6}
               </span>
@@ -406,7 +453,7 @@ class ConfigRaw extends Component {
             placeholder={loc.discordHelp}
             onChange={this.handleConfig}
           />
-          <label htmlFor="locale" className={config.showLocale ? '' : 'hide'}>
+          <label htmlFor="locale" className={config.showLocale ? "" : "hide"}>
             {/* Language */}
             {loc.localeTitle}
           </label>
@@ -415,7 +462,7 @@ class ConfigRaw extends Component {
             id="locale"
             onChange={this.handleConfig}
             value={config.locale}
-            className={config.showLocale ? '' : 'hide'}
+            className={config.showLocale ? "" : "hide"}
           >
             <option value={loc.localeOption1Value}>
               {/* English */}
@@ -437,7 +484,7 @@ class ConfigRaw extends Component {
           <span
             className="help"
             dangerouslySetInnerHTML={{
-              __html: loc.help
+              __html: loc.help,
             }}
           >
             {/* Everything saves automatically.<br />
@@ -445,9 +492,9 @@ class ConfigRaw extends Component {
           </span>
         </form>
       </div>
-    )
+    );
   }
 }
 
-const Config = withHelper({ WrappedComponent: ConfigRaw, isConfig: true })
-export default Config
+const Config = withHelper({ WrappedComponent: ConfigRaw, isConfig: true });
+export default Config;

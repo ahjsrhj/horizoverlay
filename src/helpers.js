@@ -17,6 +17,10 @@ export const defaultConfig = {
   showDiscord: false,
   showLocale: false,
   showJobless: false,
+  showDeathNumber: true,
+  showCrithitsPercent: true,
+  showDirectHitPercent: true,
+  showCirtDirectHitPercent: true,
   zoom: '1',
   discord: '',
   maxCombatants: 8,
@@ -113,7 +117,7 @@ export function withHelper({
         this.props.config.configWindow.width
       },height=${this.props.config.configWindow.height}`
       this.configWindow = window.open(
-        './#/config',
+        './config',
         'Horizoverlay Config',
         windowFeatures
       )

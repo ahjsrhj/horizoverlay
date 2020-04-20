@@ -4,13 +4,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Overlay from './Overlay'
 import Config from './Config'
 import NotFound from './NotFound'
 import SetupMode from './SetupMode'
 import initActWebSocket from './actwebsocket'
+require('./testing/testing.js')
 
 // import Raven from 'raven-js'
 // import { sentryUrl } from './sentry'
