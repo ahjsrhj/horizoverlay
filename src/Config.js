@@ -389,6 +389,58 @@ class ConfigRaw extends Component {
               </span>
             </label>
             <label
+              htmlFor="zoom120"
+              className={`${config.zoom === "1.2" ? "" : " disabled"}`}
+            >
+              <span>
+                <input
+                  type="radio"
+                  name="zoom"
+                  id="zoom120"
+                  value="1.2"
+                  checked={config.zoom === "1.2"}
+                  onChange={this.handleConfig}
+                />{" "}
+                {/* 120% */}
+                {loc.zoomOption7}
+              </span>
+            </label>
+            <label
+              htmlFor="zoom130"
+              className={`${config.zoom === "1.3" ? "" : " disabled"}`}
+            >
+              <span>
+                <input
+                  type="radio"
+                  name="zoom"
+                  id="zoom130"
+                  value="1.3"
+                  checked={config.zoom === "1.3"}
+                  onChange={this.handleConfig}
+                />{" "}
+                {/* 130% */}
+                {loc.zoomOption8}
+              </span>
+            </label>
+            <br />
+            <label
+              htmlFor="zoom140"
+              className={`${config.zoom === "1.4" ? "" : " disabled"}`}
+            >
+              <span>
+                <input
+                  type="radio"
+                  name="zoom"
+                  id="zoom140"
+                  value="1.4"
+                  checked={config.zoom === "1.4"}
+                  onChange={this.handleConfig}
+                />{" "}
+                {/* 140% */}
+                {loc.zoomOption9}
+              </span>
+            </label>
+            <label
               htmlFor="zoom150"
               className={`${config.zoom === "1.5" ? "" : " disabled"}`}
             >
