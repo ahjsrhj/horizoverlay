@@ -1,46 +1,48 @@
-import React from 'react'
-import Encounter from './Encounter'
-import Combatants from './Combatants'
-import { withHelper } from './helpers'
+/** @format */
 
-import './css/reboot.css'
-import './css/index.css'
-import './css/overlay.css'
+import React from "react";
+import Encounter from "./Encounter";
+import Combatants from "./Combatants";
+import { withHelper } from "./helpers";
+
+import "./css/reboot.css";
+import "./css/index.css";
+import "./css/overlay.css";
 
 class OverlayRaw extends React.Component {
   state = {
     limitBreak: 0,
-    discordData: []
-  }
-  handleLimitBreak = value => {
-    this.setState({ limitBreak: value })
-  }
+    discordData: [],
+  };
+  handleLimitBreak = (value) => {
+    this.setState({ limitBreak: value });
+  };
   componentWillReceiveProps(nextProps) {
     if (Object.getOwnPropertyNames(this.props.Combatant).length === 0)
-      return false
+      return false;
 
-    let maxRows = this.props.config.maxCombatants
-    let dataArray = Object.keys(this.props.Combatant)
-    let battler = dataArray.slice(0, maxRows)
-    let combatant
-    let discordData = []
+    let maxRows = this.props.config.maxCombatants;
+    let dataArray = Object.keys(this.props.Combatant);
+    let battler = dataArray.slice(0, maxRows);
+    let combatant;
+    let discordData = [];
 
     for (const ref in battler) {
-      combatant = this.props.Combatant[battler[ref]]
+      combatant = this.props.Combatant[battler[ref]];
 
       // Send to Discord the right name in Settings
-      if (combatant.name.toUpperCase() === 'YOU')
-        combatant.name = this.props.config.characterName
+      if (combatant.name.toUpperCase() === "YOU")
+        combatant.name = this.props.config.characterName;
 
       // Send limit break data separated
-      if (combatant.name.toLowerCase() === 'limit break') {
+      if (combatant.name.toLowerCase() === "limit break") {
         this.handleLimitBreak(
           parseInt(
-            this.props.Combatant.damage / this.props.Encounter.damage * 100,
+            (this.props.Combatant.damage / this.props.Encounter.damage) * 100,
             10
           )
-        )
-        break
+        );
+        break;
       }
 
       discordData.push({
@@ -48,30 +50,33 @@ class OverlayRaw extends React.Component {
         characterName: combatant.name,
         dps: combatant.ENCDPS,
         damage: parseInt(
-          combatant.damage / this.props.Encounter.damage * 100,
+          (combatant.damage / this.props.Encounter.damage) * 100,
           10
         ),
         hps: combatant.ENCHPS,
-        healed: combatant['healed%'],
+        healed: combatant["healed%"],
         deaths: combatant.deaths,
-        crit: combatant['crithit%'],
-        dhit: combatant.DirectHitPct
+        crit: combatant["crithit%"],
+        dhit: combatant.DirectHitPct,
         // maxhit: combatant.maxhit.split('-')
-      })
+      });
     }
-    this.setState({ discordData })
+    this.setState({ discordData });
   }
   render() {
-    const props = this.props
+    const props = this.props;
     return (
       <div
-        className={`damage-meter${props.isActive ? '' : ' inactive'}${
-          props.config.locale === 'zhCN' || props.config.locale === 'zhHK'
-            ? ' chinese'
-            : ''
+        className={`damage-meter${props.isActive ? "" : " inactive"}${
+          props.config.locale === "zhCN" || props.config.locale === "zhHK"
+            ? " chinese"
+            : ""
         }`}
         onContextMenu={props.openConfig}
-        style={{ zoom: props.config.zoom }}
+        style={{
+          transform: `scale(${props.config.zoom})`,
+          "transform-origin": "50% 0 0",
+        }}
       >
         <Combatants
           data={props.Combatant}
@@ -85,9 +90,9 @@ class OverlayRaw extends React.Component {
           config={props.config}
         />
       </div>
-    )
+    );
   }
 }
 
-const Overlay = withHelper({ WrappedComponent: OverlayRaw })
-export default Overlay
+const Overlay = withHelper({ WrappedComponent: OverlayRaw });
+export default Overlay;

@@ -1,39 +1,44 @@
-import React from 'react'
-import { withHelper } from './helpers'
-import locale from './locale'
+/** @format */
 
-import './css/reboot.css'
-import './css/setupMode.css'
+import React from "react";
+import { withHelper } from "./helpers";
+import locale from "./locale";
 
-var images = require.context('./images', false, /\.png$/)
+import "./css/reboot.css";
+import "./css/setupMode.css";
+
+var images = require.context("./images", false, /\.png$/);
 
 function SetupModeRaw(props) {
-  const { mockData } = props
-  const { maxCombatants } = props.config
-  const colorClass = props.config.color
-  const isVisible = props.config.showSetup ? 'show' : 'hide'
-  const loc = locale[props.config.locale]
+  const { mockData } = props;
+  const { maxCombatants } = props.config;
+  const colorClass = props.config.color;
+  const isVisible = props.config.showSetup ? "show" : "hide";
+  const loc = locale[props.config.locale];
   return (
     <div
       className={`setupMode ${colorClass}${
-        props.config.locale === 'zhCN' || props.config.locale === 'zhHK'
-          ? ' chinese'
-          : ''
+        props.config.locale === "zhCN" || props.config.locale === "zhHK"
+          ? " chinese"
+          : ""
       }`}
       onContextMenu={props.openConfig}
-      style={{ zoom: props.config.zoom }}
+      style={{
+        transform: `scale(${props.config.zoom})`,
+        "transform-origin": "50% 0 0",
+      }}
     >
       <div className={`wrapper ${isVisible}`}>
         <div className="combatants">
           {mockData.map((mock, index) => {
-            if (index >= maxCombatants) return false
-            let maxhit
-            if (mock.maxhit) maxhit = mock.maxhit.replace('-', ': ')
+            if (index >= maxCombatants) return false;
+            let maxhit;
+            if (mock.maxhit) maxhit = mock.maxhit.replace("-", ": ");
             return (
-              mock.name.toLowerCase() !== 'limit break' && (
+              mock.name.toLowerCase() !== "limit break" && (
                 <div
-                  className={`row${mock.isSelf ? ' self' : ''} ${
-                    props.config.color === 'byRole' ? mock.jobRole : ''
+                  className={`row${mock.isSelf ? " self" : ""} ${
+                    props.config.color === "byRole" ? mock.jobRole : ""
                   } ${mock.jobClass} `}
                   style={{ order: mock.rank }}
                   key={mock.rank}
@@ -50,8 +55,8 @@ function SetupModeRaw(props) {
                   </div>
                   <div
                     className={`data-items${
-                      props.config.showHighlight ? ' highlight' : ''
-                    }${mock.isHealing ? ' inverse' : ''}`}
+                      props.config.showHighlight ? " highlight" : ""
+                    }${mock.isHealing ? " inverse" : ""}`}
                   >
                     {props.config.showJobIcon ? (
                       <img
@@ -62,7 +67,7 @@ function SetupModeRaw(props) {
                     ) : null}
                     <div
                       className={`dps${
-                        mock.isHealing ? ' relevant' : ' irrelevant'
+                        mock.isHealing ? " relevant" : " irrelevant"
                       }`}
                     >
                       <div>
@@ -72,13 +77,13 @@ function SetupModeRaw(props) {
                             : mock.job.toUpperCase()}
                         </span>
                         <span className="label">
-                          {props.config.showHps ? ' HPS' : null}
+                          {props.config.showHps ? " HPS" : null}
                         </span>
                       </div>
                     </div>
                     <div
                       className={`dps${
-                        mock.isHealing ? ' irrelevant' : ' relevant'
+                        mock.isHealing ? " irrelevant" : " relevant"
                       }`}
                     >
                       <div>
@@ -103,18 +108,18 @@ function SetupModeRaw(props) {
                   </div>
                 </div>
               )
-            )
+            );
           })}
         </div>
         <div className="instructions">
           <div
             dangerouslySetInnerHTML={{
-              __html: loc.setupMode.instructionsTitle
+              __html: loc.setupMode.instructionsTitle,
             }}
           />
           <div
             dangerouslySetInnerHTML={{
-              __html: loc.setupMode.instructions
+              __html: loc.setupMode.instructions,
             }}
           />
         </div>
@@ -123,13 +128,16 @@ function SetupModeRaw(props) {
         <span>H O R I Z O V E R L A Y</span>
         <div
           dangerouslySetInnerHTML={{
-            __html: loc.initial.help
+            __html: loc.initial.help,
           }}
         />
       </div>
     </div>
-  )
+  );
 }
 
-const SetupMode = withHelper({ WrappedComponent: SetupModeRaw, willMock: true })
-export default SetupMode
+const SetupMode = withHelper({
+  WrappedComponent: SetupModeRaw,
+  willMock: true,
+});
+export default SetupMode;
