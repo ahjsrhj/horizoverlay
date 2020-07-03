@@ -3,6 +3,8 @@
 import React, { Component } from "react";
 import { bool, string, number, object, oneOfType } from "prop-types";
 import { jobRoles, otherIcons } from "./helpers";
+import JobConst from "./JobConst";
+import DetailedComp from "./components/DetailedComp";
 var images = require.context("./images", false, /\.png$/);
 
 DataWrapper.propTypes = {
@@ -77,7 +79,12 @@ export default class CombatantHorizontal extends Component {
     }
 
     // Character name (self, instead of 'YOU')
-    const characterName = isSelf ? config.characterName : data.name;
+    const showName = window.location.search.indexOf('hideName=true') >= 0 ? false : config.showName
+    const characterName = isSelf
+      ? config.characterName
+      : showName
+      ? data.name
+      : JobConst[data.Job.toLowerCase()] || data.Job;
 
     const isHealing = data.ENCHPS > data.ENCDPS;
 
@@ -118,7 +125,7 @@ export default class CombatantHorizontal extends Component {
         className={`row ${data.Job}${jobStyleClass}${
           isSelf && config.showSelf ? " self" : ""
         }`}
-        style={{ order }}
+        style={{ order, position: "relative" }}
       >
         <div className="name">
           {config.showRank ? (
@@ -138,6 +145,8 @@ export default class CombatantHorizontal extends Component {
           <DataText type="job" show={!config.showHps} {...data} />
           <DataText type="dps" {...data} />
         </div>
+        {/* <DetailedComp /> */}
+
         <DamageBar
           width={damageWidth}
           show={config.showDamagePercent}

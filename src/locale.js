@@ -152,6 +152,7 @@ const locale = {
       toggleOption14: '暴击',
       toggleOption15: '直击',
       toggleOption16: '直暴击',
+      toggleOption17: '显示名称',
       maxCombatantsTitle: '最强战员',
       zoomTitle: '缩放尺寸',
       zoomOption1: '80%',

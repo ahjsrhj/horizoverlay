@@ -144,6 +144,16 @@ class ConfigRaw extends Component {
             </label>
             <input
               type="checkbox"
+              name="showName"
+              id="showName"
+              defaultChecked={config.showName}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showName">
+              {loc.toggleOption17}
+            </label>
+            <input
+              type="checkbox"
               name="showHps"
               id="showHps"
               defaultChecked={config.showHps}

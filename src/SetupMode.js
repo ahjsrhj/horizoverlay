@@ -25,7 +25,7 @@ function SetupModeRaw(props) {
       onContextMenu={props.openConfig}
       style={{
         transform: `scale(${props.config.zoom})`,
-        "transform-origin": "50% 0 0",
+        "transformOrigin": "50% 0 0",
       }}
     >
       <div className={`wrapper ${isVisible}`}>
