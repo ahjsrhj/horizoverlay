@@ -2,6 +2,7 @@
 
 添加了直击/暴击/直暴击/死亡次数的展示
 添加了更细分的缩放比率
+添加参数?hideName=true 强制隐藏角色名称
 
 ![1587438754677.png](https://i.loli.net/2020/04/21/6KEBZlkgAJNpxvm.png)
 ![1587438967166.png](https://i.loli.net/2020/04/21/2pRFxOIyW6Sv8zk.png)
