@@ -13,14 +13,9 @@ import SetupMode from './SetupMode'
 import initActWebSocket from './actwebsocket'
 // require('./testing/testing.js')
 
-// import Raven from 'raven-js'
-// import { sentryUrl } from './sentry'
-
 require(`./images/handle.png`)
 
 initActWebSocket()
-
-// Raven.config(sentryUrl).install()
 
 window.lastData = {}
 const Inactive = detail => {

@@ -23,7 +23,7 @@ export const defaultConfig = {
   showCrithitsPercent: true,
   showDirectHitPercent: true,
   showCirtDirectHitPercent: true,
-  showName: false,
+  showName: true,
   zoom: "1",
   discord: "",
   maxCombatants: 8,
