@@ -1,7 +1,7 @@
 /** @format */
 
 const JOB_CONST = {
-  whm: "闪耀法师",
+  whm: "投石机",
   sch: "学者",
   ast: "发牌的",
   cnj: "幻术师",
