@@ -89,14 +89,22 @@ export function withHelper({
     }
     updateState = () => {
       const configStore = localStorage.getItem("horizoverlay");
+      let config = null;
       if (!configStore) {
-        const config = this.props.config;
+        config = this.props.config;
         localStorage.setItem("horizoverlay", JSON.stringify(config));
-        this.setState({ config });
       } else {
-        const config = JSON.parse(configStore);
-        this.setState({ config });
+        config = JSON.parse(configStore);
       }
+      config.zoom =
+        window.location.search.indexOf("zoom") >= 0
+          ? window.location.search
+              .slice(1)
+              .split("&")
+              .filter((str) => str.startsWith("zoom"))[0]
+              .split("=")[1]
+          : config.zoom;
+      this.setState({ config });
     };
     handleResize = () => {
       const config = { ...this.state.config };
