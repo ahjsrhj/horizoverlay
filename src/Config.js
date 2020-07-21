@@ -413,40 +413,41 @@ class ConfigRaw extends Component {
                 {loc.zoomOption7}
               </span>
             </label>
-            {/* <label */}
-            {/* htmlFor="zoom130" */}
-            {/* className={`${config.zoom === "1.3" ? "" : " disabled"}`} */}
-            {/* > */}
-            {/* <span> */}
-            {/* <input */}
-            {/* type="radio" */}
-            {/* name="zoom" */}
-            {/* id="zoom130" */}
-            {/* value="1.3" */}
-            {/* checked={config.zoom === "1.3"} */}
-            {/* onChange={this.handleConfig} */}
-            {/* />{" "} */}
-            {/* 130% */}
-            {/* {loc.zoomOption8} */}
-            {/* </span> */}
-            {/* </label> */}
-            {/* <label */}
-            {/* htmlFor="zoom140" */}
-            {/* className={`${config.zoom === "1.4" ? "" : " disabled"}`} */}
-            {/* > */}
-            {/* <span> */}
-            {/* <input */}
-            {/* type="radio" */}
-            {/* name="zoom" */}
-            {/* id="zoom140" */}
-            {/* value="1.4" */}
-            {/* checked={config.zoom === "1.4"} */}
-            {/* onChange={this.handleConfig} */}
-            {/* />{" "} */}
-            {/* 140% */}
-            {/* {loc.zoomOption9} */}
-            {/* </span> */}
-            {/* </label> */}
+            <label
+              htmlFor="zoom130"
+              className={`${config.zoom === "1.3" ? "" : " disabled"}`}
+            >
+              <span>
+                <input
+                  type="radio"
+                  name="zoom"
+                  id="zoom130"
+                  value="1.3"
+                  checked={config.zoom === "1.3"}
+                  onChange={this.handleConfig}
+                />{" "}
+                {/* 130% */}
+                {loc.zoomOption8}
+              </span>
+            </label>
+            <label
+              htmlFor="zoom140"
+              className={`${config.zoom === "1.4" ? "" : " disabled"}`}
+            >
+              <span>
+                <input
+                  type="radio"
+                  name="zoom"
+                  id="zoom140"
+                  value="1.4"
+                  checked={config.zoom === "1.4"}
+                  onChange={this.handleConfig}
+                />{" "}
+                {/* 140% */}
+                {loc.zoomOption9}
+              </span>
+            </label>
+            <br />
 
             <label
               htmlFor="zoom150"
@@ -482,9 +483,9 @@ class ConfigRaw extends Component {
                 {loc.zoomOption6}
               </span>
             </label>
-            <br />
             <input
-              type="range"
+              // type="range"
+              type="number"
               min="0.5"
               max="2"
               step="0.1"
@@ -493,7 +494,7 @@ class ConfigRaw extends Component {
               value={config.zoom}
               onChange={this.handleConfig}
             />
-            <span>{config.zoom}</span>
+            {/* <span>{config.zoom}</span> */}
           </fieldset>
           <button type="submit" className="reset">
             <span>
