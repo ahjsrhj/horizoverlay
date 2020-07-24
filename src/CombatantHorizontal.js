@@ -91,22 +91,27 @@ export default class CombatantHorizontal extends Component {
     let maxhit;
     if (data.maxhit) maxhit = data.maxhit.replace("-", ": ");
 
-    // const crithit = data['crithit%'];
-    // const crithit = data['crithit%'];
-    // const directHit = data['DirectHitCount'];
-    // console.log('crithit', crithit)
     const {
       crithits = 0,
       DirectHitCount = 0,
       CritDirectHitCount = 0,
       hits = 1,
       deaths = 0,
+      OverHealPct = '0%',
     } = data;
+    const healedPercent = data['healed%'];
+    // const crithealPercent = data['critheal%'];
+
     const parsePercent = (percent) =>
       Number.isNaN(percent) ? "0%" : `${(percent * 100).toFixed(0)}%`;
     const cirtHitPercent = parsePercent(crithits / hits);
     const directHitPercent = parsePercent(DirectHitCount / hits);
     const cirtDirectHitPercent = parsePercent(CritDirectHitCount / hits);
+    let healedInfoArr = [];
+    if (config.showHealedInfo) {
+      healedInfoArr = [`过量:${OverHealPct}`, `疗比:${healedPercent}`];
+    }
+
 
     // 暴:{cirtHitPercent} 直:{directHitPercent} 直暴:{cirtDirectHitPercent}
     const hitPercentArr = [];
@@ -155,6 +160,11 @@ export default class CombatantHorizontal extends Component {
         {hitPercentArr.length > 0 ? (
           <div className="ch-info">
             {hitPercentArr.reduce((str, item) => str + " " + item)}
+          </div>
+        ) : null}
+        {healedInfoArr.length > 0 ? (
+          <div className="ch-info">
+            {healedInfoArr.reduce((str, item) => str + " " + item)}
           </div>
         ) : null}
         <div className="maxhit">{config.showMaxhit && maxhit}</div>

@@ -269,8 +269,20 @@ class ConfigRaw extends Component {
               onChange={this.handleConfig}
             />
             <label htmlFor="showCirtDirectHitPercent">
-              {/* Damage % */}
+              {/* 直爆 % */}
               {loc.toggleOption16}
+            </label>
+
+            <input
+              type="checkbox"
+              name="showHealedInfo"
+              id="showHealedInfo"
+              defaultChecked={config.showHealedInfo}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showHealedInfo">
+              {/* 疗量信息 % */}
+              {loc.toggleOption18}
             </label>
 
             <input

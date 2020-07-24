@@ -23,6 +23,8 @@ export const defaultConfig = {
   showCrithitsPercent: true,
   showDirectHitPercent: true,
   showCirtDirectHitPercent: true,
+  showHealedInfo: false,
+  
   showName: true,
   zoom: "1",
   discord: "",
@@ -66,6 +68,7 @@ export function withHelper({
         showCrithitsPercent: bool.isRequired,
         showDirectHitPercent: bool.isRequired,
         showCirtDirectHitPercent: bool.isRequired,
+        showHealedInfo: bool.isRequired,
         showName: bool.isRequired,
       }),
     };
