@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { bool, string, number, object, oneOfType } from "prop-types";
 import { jobRoles, otherIcons } from "./helpers";
 import JobConst from "./JobConst";
-import DetailedComp from "./components/DetailedComp";
+// import DetailedComp from "./components/DetailedComp";
 var images = require.context("./images", false, /\.png$/);
 
 DataWrapper.propTypes = {
