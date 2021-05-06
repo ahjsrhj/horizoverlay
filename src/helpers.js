@@ -24,6 +24,7 @@ export const defaultConfig = {
   showDirectHitPercent: true,
   showCirtDirectHitPercent: true,
   showHealedInfo: false,
+  showSwings: false,
   
   showName: true,
   zoom: "1",
@@ -69,6 +70,7 @@ export function withHelper({
         showDirectHitPercent: bool.isRequired,
         showCirtDirectHitPercent: bool.isRequired,
         showHealedInfo: bool.isRequired,
+        showSwings: bool.isRequired,
         showName: bool.isRequired,
       }),
     };

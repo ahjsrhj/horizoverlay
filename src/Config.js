@@ -287,6 +287,18 @@ class ConfigRaw extends Component {
 
             <input
               type="checkbox"
+              name="showSwings"
+              id="showSwings"
+              defaultChecked={config.showSwings}
+              onChange={this.handleConfig}
+            />
+            <label htmlFor="showSwings">
+              {/* 技能数swings  */}
+              {loc.toggleOption19}
+            </label>
+
+            <input
+              type="checkbox"
               name="showJobless"
               id="showJobless"
               defaultChecked={config.showJobless}

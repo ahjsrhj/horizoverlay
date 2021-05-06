@@ -79,7 +79,10 @@ export default class CombatantHorizontal extends Component {
     }
 
     // Character name (self, instead of 'YOU')
-    const showName = window.location.search.indexOf('hideName=true') >= 0 ? false : config.showName
+    const showName =
+      window.location.search.indexOf("hideName=true") >= 0
+        ? false
+        : config.showName;
     const characterName = isSelf
       ? config.characterName
       : showName
@@ -97,9 +100,9 @@ export default class CombatantHorizontal extends Component {
       CritDirectHitCount = 0,
       hits = 1,
       deaths = 0,
-      OverHealPct = '0%',
+      OverHealPct = "0%",
     } = data;
-    const healedPercent = data['healed%'];
+    const healedPercent = data["healed%"];
     // const crithealPercent = data['critheal%'];
 
     const parsePercent = (percent) =>
@@ -111,7 +114,6 @@ export default class CombatantHorizontal extends Component {
     if (config.showHealedInfo) {
       healedInfoArr = [`过量:${OverHealPct}`, `疗比:${healedPercent}`];
     }
-
 
     // 暴:{cirtHitPercent} 直:{directHitPercent} 直暴:{cirtDirectHitPercent}
     const hitPercentArr = [];
@@ -156,6 +158,7 @@ export default class CombatantHorizontal extends Component {
           width={damageWidth}
           show={config.showDamagePercent}
           deaths={config.showDeathNumber ? deaths : false}
+          swings={config.showSwings ? data.swings : false}
         />
         {hitPercentArr.length > 0 ? (
           <div className="ch-info">
@@ -173,7 +176,7 @@ export default class CombatantHorizontal extends Component {
   }
 }
 
-function DamageBar({ width, show, deaths }) {
+function DamageBar({ width, show, deaths, swings }) {
   if (!show) return null;
   return (
     <div>
@@ -182,7 +185,14 @@ function DamageBar({ width, show, deaths }) {
       </div>
       <div className="damage-percent">
         {deaths === false ? null : <div>死:{deaths} </div>}
-        <div className="damage-percent-num">{width}</div>
+        {swings === false ? null : <div>swings:{swings} </div>}
+        <div
+          className={
+            deaths === false && swings === false ? "damage-percent-num" : null
+          }
+        >
+          {width}
+        </div>
       </div>
     </div>
   );
