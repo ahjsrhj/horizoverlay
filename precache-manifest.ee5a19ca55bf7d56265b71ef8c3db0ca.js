@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1e848b4e9e3459dae3c9e88727ac8f33",
+    "revision": "6257e1b9069a3856d548e7996e258b46",
     "url": "https://cdn.jsdelivr.net/gh/ahjsrhj/horizoverlay@gh-pages/index.html"
   },
   {
-    "revision": "b202389621d0816200db",
+    "revision": "c83bbf10cfeef340fd02",
     "url": "https://cdn.jsdelivr.net/gh/ahjsrhj/horizoverlay@gh-pages/static/css/main.4fac3df4.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "https://cdn.jsdelivr.net/gh/ahjsrhj/horizoverlay@gh-pages/static/js/2.a9db8167.chunk.js"
   },
   {
-    "revision": "b202389621d0816200db",
-    "url": "https://cdn.jsdelivr.net/gh/ahjsrhj/horizoverlay@gh-pages/static/js/main.c35041bc.chunk.js"
+    "revision": "c83bbf10cfeef340fd02",
+    "url": "https://cdn.jsdelivr.net/gh/ahjsrhj/horizoverlay@gh-pages/static/js/main.93427537.chunk.js"
   },
   {
     "revision": "a83d0b470c27a4f9f2f1",
