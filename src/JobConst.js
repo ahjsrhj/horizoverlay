@@ -29,8 +29,8 @@ const JOB_CONST = {
   arc: "弓箭手",
   blu: "青魔",
   lb: "LB",
-  rea: "钐镰师",
-  sag: "贤者"
+  rpr: "钐镰师",
+  sge: "贤者"
 };
 
 export default JOB_CONST;
