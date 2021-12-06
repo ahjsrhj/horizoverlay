@@ -3,6 +3,7 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
+import OverlayAPI from 'ffxiv-overlay-api';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
@@ -11,6 +12,7 @@ import Config from './Config'
 import NotFound from './NotFound'
 import SetupMode from './SetupMode'
 import initActWebSocket from './actwebsocket'
+
 // require('./testing/testing.js')
 
 require(`./images/handle.png`)
@@ -43,24 +45,6 @@ const Root = detail => {
 
 // This will run when data is ON
 function onOverlayDataUpdate(e) {
-  // discordString is true whenever the user uses '/e discord' in game
-  // const discordString =
-  //   'detail' in e &&
-  //   'payload' in e.detail &&
-  //   e.detail.payload[2].toLowerCase().indexOf('discord')
-
-  // regardless, we keep sending combat data
-  // if (e.type === 'onOverlayDataUpdate' || discordString) {
-  // ... but we save the last data in case the next data isn't combat data
-  //   window.lastData = e.detail
-  //   ReactDOM.render(<Root {...e.detail} />, document.getElementById('root'))
-  // } else if (discordString && window.lastData !== {}) {
-  // then we send the last data here, which won't update combat numbers but will send discord stuff
-  // ReactDOM.render(
-  //   <Root detail={window.lastData} discord={true} />,
-  //   document.getElementById('root')
-  // )
-  // }
   const detail = (e.detail.msg ? e.detail.msg : e.detail)
   
   ReactDOM.render(<Root {...detail} />, document.getElementById('root'))
@@ -96,3 +80,28 @@ window.addEventListener('message', function(e) {
     onOverlayDataUpdate(e.data)
   }
 })
+
+
+// 新的监听方式
+// OverlayAPI.
+const overlay = new OverlayAPI({
+  extendData: true,
+  silentMode: false,
+});
+
+overlay.addListener('CombatData', (data) => {
+  console.log('listener of `CombatData`', data);
+});
+overlay.addListener('ChangeZone', (data) => {
+  console.log('listener of `ChangeZone`', data);
+});
+overlay.addListener('OnlineStatusChanged', (data) =>{
+  console.log('listener of `OnlineStatusChanged`', data);
+  if (data.status === 'InCutscene') {
+    // 过场动画中
+  } else {
+    // 离开过场动画
+  }
+})
+
+overlay.startEvent();

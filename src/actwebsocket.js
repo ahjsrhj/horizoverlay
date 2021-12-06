@@ -205,6 +205,9 @@ class WebSocketImpl extends ActWebsocketInterface {
   onBroadcastMessage(e) {
     if (e.detail.msgtype === 'CombatData') {
       document.dispatchEvent(new CustomEvent('onOverlayDataUpdate', e))
+    } else if (e.detail.msgtype === 'OnlineStatusChanged') {
+      // 状态变更
+      document.dispatchEvent(new CustomEvent('OnlineStatusChanged', e))
     }
   }
 }
