@@ -1,5 +1,5 @@
 /** @format */
-
+// TODO: change rea and sag to real
 const JOB_CONST = {
   whm: "投石机",
   sch: "学者",
@@ -29,6 +29,8 @@ const JOB_CONST = {
   arc: "弓箭手",
   blu: "青魔",
   lb: "LB",
+  rpr: "钐镰师",
+  sge: "贤者"
 };
 
 export default JOB_CONST;
