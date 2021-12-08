@@ -1,8 +1,5 @@
 /** @format */
 
-// uncomment for testing
-// import './testing/testing'
-
 import React from "react";
 import ReactDOM from "react-dom";
 import OverlayAPI from "ffxiv-overlay-api";
@@ -13,13 +10,9 @@ import Overlay from "./Overlay";
 import Config from "./Config";
 import NotFound from "./NotFound";
 import SetupMode from "./SetupMode";
-// import initActWebSocket from "./actwebsocket";
-
-// require('./testing/testing.js')
+// import { startTesting } from "./testing/testing.js";
 
 require(`./images/handle.png`);
-
-// initActWebSocket();
 
 window.lastData = {};
 const Inactive = (detail) => {
@@ -108,3 +101,5 @@ overlay.addListener("ChangePrimaryPlayer", (data) => {
 });
 
 overlay.startEvent();
+
+// startTesting(overlay);
