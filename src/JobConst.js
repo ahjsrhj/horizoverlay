@@ -1,7 +1,7 @@
 /** @format */
 // TODO: change rea and sag to real
 const JOB_CONST = {
-  whm: "投石机",
+  whm: "抛光机",
   sch: "学者",
   ast: "发牌的",
   sge: "贤者",
