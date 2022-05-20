@@ -1,7 +1,7 @@
 {
   "name": "horizoverlay",
   "description": "A simple horizontal damage meter overlay for Final Fantasy XIV with ACT",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "author": "Rafael 'BSIDES' Pereira",
   "contributors": [
     "Please check this url for the whole list(https://github.com/ahjsrhj/horizoverlay/graphs/contributors)"
@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "env PUBLIC_URL='https://cdn.jsdelivr.net/gh/ahjsrhj/horizoverlay@gh-pages/' react-scripts build",
+    "build": "env PUBLIC_URL='https://cdn.imrhj.cn/' react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
