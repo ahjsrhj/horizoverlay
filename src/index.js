@@ -4,7 +4,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import OverlayAPI from "ffxiv-overlay-api";
 
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 
 import Overlay from "./Overlay";
 import Config from "./Config";

@@ -136,7 +136,7 @@ export function withHelper({
       this.setState({ isConfigOpen: true });
       const windowFeatures = `menubar=no,location=no,resizable=no,scrollbars=yes,status=no,width=${this.props.config.configWindow.width},height=${this.props.config.configWindow.height}`;
       this.configWindow = window.open(
-        "./config",
+        "./#/config",
         "Horizoverlay Config",
         windowFeatures
       );
