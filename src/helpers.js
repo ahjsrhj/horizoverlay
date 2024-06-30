@@ -197,6 +197,8 @@ export const jobRoles = {
     "chocobo",
     "rpr",
     "lb",
+    "vpr",
+    "pct"
   ],
 };
 
